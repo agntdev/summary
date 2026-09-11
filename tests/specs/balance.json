@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Returns pilot's current EUR balance, total accumulated hours, and recent flights"
+              "text": "Your LuftBank balance: €0.00\nTotal hours: 0.00\n\nRecent flights\nNo flights yet — tap Register flight to add one."
             }
           }
         ],
