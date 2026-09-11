@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/register",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Slash command alternative to start registration; accepts structured parameters or enters a guided ForceReply"
+            }
+          }
+        ],
+        "send": {
+          "text": "/register"
+        }
+      }
+    ]
+  }
+]
