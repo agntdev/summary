@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Slash command alternative to start registration; accepts structured parameters or enters a guided ForceReply"
+              "text": "Send your route in ICAO format, for example EDDF-EGLL."
             }
           }
         ],
@@ -15,6 +15,12 @@
           "text": "/register"
         }
       }
+    ]
+  },
+  {
+    "name": "registration assigns a European LH number",
+    "steps": [
+      { "send": { "text": "/register EDDF-EGLL 2026-09-12 10:00 2026-09-12 11:30" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Flight LH200 is registered.\nEDDF-EGLL\nScheduled: 2026-09-12 10:00 to 11:30 UTC." } }] }
     ]
   }
 ]

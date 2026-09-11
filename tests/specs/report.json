@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Submit a flight report; used for typed actual times and notes (or reply to a message in the Reports thread)"
+              "text": "Send actual departure and arrival in one line: YYYY-MM-DD HH:MM, YYYY-MM-DD HH:MM UTC."
             }
           }
         ],
@@ -15,6 +15,13 @@
           "text": "/report"
         }
       }
+    ]
+  },
+  {
+    "name": "report matches and credits a registered flight",
+    "steps": [
+      { "send": { "text": "/register EDDF-LFPG 2026-09-13 10:00 2026-09-13 11:00" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Flight LH201 is registered.\nEDDF-LFPG\nScheduled: 2026-09-13 10:00 to 11:00 UTC." } }] },
+      { "send": { "text": "/report 2026-09-13 10:05, 2026-09-13 11:05" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Your report matched LH201 and was approved. €25.00 was credited. New balance: €25.00." } }] }
     ]
   }
 ]

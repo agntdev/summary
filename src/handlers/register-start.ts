@@ -1,4 +1,6 @@
 import { Composer } from "grammy";
+import type { Ctx } from "../bot.js";
+import { registerMainMenuItem } from "../toolkit/index.js";
 
 // SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
 // Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
@@ -7,11 +9,14 @@ import { Composer } from "grammy";
 // Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
 // Menu: wire this into /start via registerMainMenuItem({ label: "Register flight", data: "register:start" }) if the toolkit exposes it.
 
-const composer = new Composer();
+type Flow = { step?: string; route?: string; departure?: string; arrival?: string };
+const composer = new Composer<Ctx>();
+registerMainMenuItem({ label: "Register flight", data: "register:start", order: 10 });
 
 composer.callbackQuery("register:start", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.reply("Begin structured flight registration via guided prompts");
+  (ctx.session as Flow).step = "register_route";
+  await ctx.reply("Send your route in ICAO format, for example EDDF-EGLL.", { reply_markup: { force_reply: true, input_field_placeholder: "EDDF-EGLL" } });
 });
 
 export default composer;

@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Begin structured flight registration via guided prompts"
+              "text": "Send your route in ICAO format, for example EDDF-EGLL."
             }
           }
         ],
